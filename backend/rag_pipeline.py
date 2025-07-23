@@ -4,6 +4,10 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
 import os
 from langchain.prompts import PromptTemplate
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 stoic_style_prompt = PromptTemplate(
     input_variables=["question", "answer"],
@@ -32,7 +36,6 @@ def get_stoic_qa_chain():
         model="gemini-2.5-pro",
         temperature=0.7,
         api_key=os.getenv("GEMINI_API_KEY"),
-        convert_system_message_to_human=True
     )
 
     qa_chain = RetrievalQA.from_chain_type(

@@ -1,40 +1,505 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: "Georgia", serif;
-  background: #f5f5f5;
-  display: flex;
-  justify-content: center;
-  padding-top: 60px;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #d4c5a9 0%, #f0e6d2 50%, #e8dcc0 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
 }
 
-.container {
-  text-align: center;
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  max-width: 600px;
-  width: 90%;
+/* Decorative background elements */
+body::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 20px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3C!DOCTYPE%20svg%20%20PUBLIC%20'-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN'%20%20'http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd'%3E%3C!--%20Made%20by%20iconsider%20--%3E%3Csvg%20width%3D%22800px%22%20height%3D%22800px%22%20viewBox%3D%220%200%2064%2064%22%20enable-background%3D%22new%200%200%2064%2064%22%20version%3D%221.1%22%20xml%3Aspace%3D%22preserve%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cg%20id%3D%22Layer_2%22%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2250.621%22%20x2%3D%2250.621%22%20y1%3D%229.712%22%20y2%3D%2213.893%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2252.712%22%20x2%3D%2248.53%22%20y1%3D%2211.803%22%20y2%3D%2211.803%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2211.687%22%20x2%3D%2211.687%22%20y1%3D%229.712%22%20y2%3D%2213.893%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2213.778%22%20x2%3D%229.596%22%20y1%3D%2211.803%22%20y2%3D%2211.803%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2247.687%22%20x2%3D%2247.687%22%20y1%3D%2216.499%22%20y2%3D%2218.832%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2248.854%22%20x2%3D%2246.52%22%20y1%3D%2217.665%22%20y2%3D%2217.665%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2245.813%22%20x2%3D%2245.813%22%20y1%3D%2252.438%22%20y2%3D%2254.771%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2246.98%22%20x2%3D%2244.646%22%20y1%3D%2253.605%22%20y2%3D%2253.605%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2221.512%22%20x2%3D%2221.512%22%20y1%3D%2252.438%22%20y2%3D%2254.771%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2222.678%22%20x2%3D%2220.345%22%20y1%3D%2253.605%22%20y2%3D%2253.605%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2216.976%22%20x2%3D%2216.976%22%20y1%3D%2216.499%22%20y2%3D%2218.832%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2218.143%22%20x2%3D%2215.81%22%20y1%3D%2217.665%22%20y2%3D%2217.665%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cg%20id%3D%22Layer_1%22%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2232.001%22%20x2%3D%2214.385%22%20y1%3D%2239.928%22%20y2%3D%2227.857%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2232.001%22%20x2%3D%2249.616%22%20y1%3D%2239.928%22%20y2%3D%2227.857%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2242.014%22%20x2%3D%2249.612%22%20y1%3D%2243.123%22%20y2%3D%2248.329%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2221.983%22%20x2%3D%2214.385%22%20y1%3D%2243.123%22%20y2%3D%2248.329%22%2F%3E%3Crect%20fill%3D%22none%22%20height%3D%2224.14%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20width%3D%2235.228%22%20x%3D%2214.384%22%20y%3D%2224.188%22%2F%3E%3Cpath%20d%3D%22%20%20%20%20M40.513%2C24.188H23.489c0-4.703%2C3.805-8.516%2C8.508-8.516C36.699%2C15.671%2C40.513%2C19.485%2C40.513%2C24.188z%22%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cg%20id%3D%22Layer_3%22%2F%3E%3C%2Fsvg%3E") no-repeat;
+    opacity: 0.3;
+    z-index: 0;
 }
 
-input {
-  width: 80%;
-  padding: 0.75rem;
-  margin: 1rem 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+body::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    width: 150px;
+    height: 150px;
+    background: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3C!DOCTYPE%20svg%20%20PUBLIC%20'-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN'%20%20'http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd'%3E%3C!--%20Made%20by%20iconsider%20--%3E%3Csvg%20width%3D%22800px%22%20height%3D%22800px%22%20viewBox%3D%220%200%2064%2064%22%20enable-background%3D%22new%200%200%2064%2064%22%20version%3D%221.1%22%20xml%3Aspace%3D%22preserve%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cg%20id%3D%22Layer_2%22%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2227.167%22%20x2%3D%2227.167%22%20y1%3D%2213.489%22%20y2%3D%2217.67%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2229.258%22%20x2%3D%2225.076%22%20y1%3D%2215.579%22%20y2%3D%2215.579%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2236.081%22%20x2%3D%2236.081%22%20y1%3D%2243.856%22%20y2%3D%2248.038%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2238.172%22%20x2%3D%2233.99%22%20y1%3D%2245.947%22%20y2%3D%2245.947%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2223.944%22%20x2%3D%2223.944%22%20y1%3D%2221.208%22%20y2%3D%2223.542%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2225.111%22%20x2%3D%2222.778%22%20y1%3D%2222.375%22%20y2%3D%2222.375%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2240.785%22%20x2%3D%2240.785%22%20y1%3D%2237.862%22%20y2%3D%2240.195%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2241.952%22%20x2%3D%2239.619%22%20y1%3D%2239.028%22%20y2%3D%2239.028%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cg%20id%3D%22Layer_1%22%3E%3Cg%3E%3Crect%20fill%3D%22none%22%20height%3D%2237.512%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20transform%3D%22matrix(0.7071%200.7071%20-0.7071%200.7071%2032.2562%20-12.6363)%22%20width%3D%2210.682%22%20x%3D%2226.041%22%20y%3D%2213.862%22%2F%3E%3Cpolygon%20fill%3D%22none%22%20points%3D%22%20%20%20%2018.086%2C45.914%2021.854%2C49.681%2016.707%2C51.06%2011.561%2C52.439%2012.94%2C47.293%2014.319%2C42.146%20%20%20%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%2F%3E%3Crect%20fill%3D%22none%22%20height%3D%225.28%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20transform%3D%22matrix(0.7071%200.7071%20-0.7071%200.7071%2025.9895%20-27.7655)%22%20width%3D%2210.682%22%20x%3D%2241.17%22%20y%3D%2214.85%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cg%20id%3D%22Layer_3%22%2F%3E%3C%2Fsvg%3E") no-repeat;
+    opacity: 0.2;
+    z-index: 0;
 }
 
-button {
-  padding: 0.6rem 1.2rem;
-  border: none;
-  background-color: #333;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
+.scribble1 {
+
+    background: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3C!DOCTYPE%20svg%20%20PUBLIC%20'-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN'%20%20'http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd'%3E%3C!--%20Made%20by%20iconsider%20--%3E%3Csvg%20width%3D%22800px%22%20height%3D%22800px%22%20viewBox%3D%220%200%2064%2064%22%20enable-background%3D%22new%200%200%2064%2064%22%20version%3D%221.1%22%20xml%3Aspace%3D%22preserve%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cg%20id%3D%22Layer_2%22%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2250.621%22%20x2%3D%2250.621%22%20y1%3D%229.712%22%20y2%3D%2213.893%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2252.712%22%20x2%3D%2248.53%22%20y1%3D%2211.803%22%20y2%3D%2211.803%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2211.687%22%20x2%3D%2211.687%22%20y1%3D%229.712%22%20y2%3D%2213.893%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2213.778%22%20x2%3D%229.596%22%20y1%3D%2211.803%22%20y2%3D%2211.803%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2247.687%22%20x2%3D%2247.687%22%20y1%3D%2216.499%22%20y2%3D%2218.832%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2248.854%22%20x2%3D%2246.52%22%20y1%3D%2217.665%22%20y2%3D%2217.665%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2245.813%22%20x2%3D%2245.813%22%20y1%3D%2252.438%22%20y2%3D%2254.771%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2246.98%22%20x2%3D%2244.646%22%20y1%3D%2253.605%22%20y2%3D%2253.605%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2221.512%22%20x2%3D%2221.512%22%20y1%3D%2252.438%22%20y2%3D%2254.771%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2222.678%22%20x2%3D%2220.345%22%20y1%3D%2253.605%22%20y2%3D%2253.605%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2216.976%22%20x2%3D%2216.976%22%20y1%3D%2216.499%22%20y2%3D%2218.832%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2218.143%22%20x2%3D%2215.81%22%20y1%3D%2217.665%22%20y2%3D%2217.665%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cg%20id%3D%22Layer_1%22%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2232.001%22%20x2%3D%2214.385%22%20y1%3D%2239.928%22%20y2%3D%2227.857%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2232.001%22%20x2%3D%2249.616%22%20y1%3D%2239.928%22%20y2%3D%2227.857%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2242.014%22%20x2%3D%2249.612%22%20y1%3D%2243.123%22%20y2%3D%2248.329%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2221.983%22%20x2%3D%2214.385%22%20y1%3D%2243.123%22%20y2%3D%2248.329%22%2F%3E%3Crect%20fill%3D%22none%22%20height%3D%2224.14%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20width%3D%2235.228%22%20x%3D%2214.384%22%20y%3D%2224.188%22%2F%3E%3Cpath%20d%3D%22%20%20%20%20M40.513%2C24.188H23.489c0-4.703%2C3.805-8.516%2C8.508-8.516C36.699%2C15.671%2C40.513%2C19.485%2C40.513%2C24.188z%22%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cg%20id%3D%22Layer_3%22%2F%3E%3C%2Fsvg%3E") no-repeat;
+
 }
 
-#answerBox {
-  margin-top: 1.5rem;
-  font-style: italic;
-  white-space: pre-wrap;
+.scribble2 {
+
+    background: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3C!DOCTYPE%20svg%20%20PUBLIC%20'-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN'%20%20'http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd'%3E%3C!--%20Made%20by%20iconsider%20--%3E%3Csvg%20width%3D%22800px%22%20height%3D%22800px%22%20viewBox%3D%220%200%2064%2064%22%20enable-background%3D%22new%200%200%2064%2064%22%20version%3D%221.1%22%20xml%3Aspace%3D%22preserve%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cg%20id%3D%22Layer_2%22%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2227.167%22%20x2%3D%2227.167%22%20y1%3D%2213.489%22%20y2%3D%2217.67%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2229.258%22%20x2%3D%2225.076%22%20y1%3D%2215.579%22%20y2%3D%2215.579%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2236.081%22%20x2%3D%2236.081%22%20y1%3D%2243.856%22%20y2%3D%2248.038%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20x1%3D%2238.172%22%20x2%3D%2233.99%22%20y1%3D%2245.947%22%20y2%3D%2245.947%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2223.944%22%20x2%3D%2223.944%22%20y1%3D%2221.208%22%20y2%3D%2223.542%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2225.111%22%20x2%3D%2222.778%22%20y1%3D%2222.375%22%20y2%3D%2222.375%22%2F%3E%3C%2Fg%3E%3Cg%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2240.785%22%20x2%3D%2240.785%22%20y1%3D%2237.862%22%20y2%3D%2240.195%22%2F%3E%3Cline%20fill%3D%22none%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20x1%3D%2241.952%22%20x2%3D%2239.619%22%20y1%3D%2239.028%22%20y2%3D%2239.028%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cg%20id%3D%22Layer_1%22%3E%3Cg%3E%3Crect%20fill%3D%22none%22%20height%3D%2237.512%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20transform%3D%22matrix(0.7071%200.7071%20-0.7071%200.7071%2032.2562%20-12.6363)%22%20width%3D%2210.682%22%20x%3D%2226.041%22%20y%3D%2213.862%22%2F%3E%3Cpolygon%20fill%3D%22none%22%20points%3D%22%20%20%20%2018.086%2C45.914%2021.854%2C49.681%2016.707%2C51.06%2011.561%2C52.439%2012.94%2C47.293%2014.319%2C42.146%20%20%20%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%2F%3E%3Crect%20fill%3D%22none%22%20height%3D%225.28%22%20stroke%3D%22%23231F20%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%2210%22%20stroke-width%3D%222%22%20transform%3D%22matrix(0.7071%200.7071%20-0.7071%200.7071%2025.9895%20-27.7655)%22%20width%3D%2210.682%22%20x%3D%2241.17%22%20y%3D%2214.85%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cg%20id%3D%22Layer_3%22%2F%3E%3C%2Fsvg%3E") no-repeat;
+}
+@keyframes scribbleFloat {
+  0%   { transform: translateY(0) scale(1) rotate(0deg); filter: hue-rotate(0deg); }
+  50%  { transform: translateY(-5px) scale(1.05) rotate(5deg); filter: hue-rotate(90deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); filter: hue-rotate(180deg); }
+}
+
+.scribble {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  animation: scribbleFloat 10s ease-in-out infinite;
+}
+
+
+.device-frame {
+    background: linear-gradient(145deg, #2c3e2f, #1a251c);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        inset 0 2px 10px rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 10001;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.screen {
+    background: linear-gradient(135deg, #f5f2eb 0%, #ede6d9 100%);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #4a6741, #5c7a52);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.back-arrow {
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.back-arrow:hover {
+    opacity: 1;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.menu-container {
+    position: relative;
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.menu-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-line {
+    width: 20px;
+    height: 2px;
+    background: white;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+.menu-icon.active .menu-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.active .menu-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.active .menu-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #2c3e2f;
+    border-radius: 8px;
+    min-width: 200px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #2c3e2f;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: #f9f6f0;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-item:active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.menu-item svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    padding: 30px;
+    min-height: 500px;
+}
+
+.input-panel {
+    background: #f9f6f0;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #e8dcc0;
+}
+
+.input-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.response-panel {
+    background: linear-gradient(135deg, #4a6741, #5c7a52);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.response-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,50 Q25,25 50,50 T100,50' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.1'/%3E%3C/svg%3E");
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.input-textarea {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #2c3e2f;
+    resize: none;
+    outline: none;
+    min-height: 200px;
+    padding: 0;
+    white-space: pre-wrap;  
+    word-break: break-word; 
+    overflow-wrap: break-word;
+    width: 100%;
+}
+
+.input-textarea::placeholder {
+    color: #8a9c8a;
+    font-style: italic;
+}
+
+/* Input display div for screenshots - matches textarea styling exactly */
+.input-display {
+    flex: 1;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #2c3e2f;
+    min-height: 200px;
+    padding: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.ask-button {
+    background: linear-gradient(135deg, #4a6741, #5c7a52);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 3px 10px rgba(74, 103, 65, 0.3);
+}
+
+.ask-button:hover {
+    transform: translateY(-1px);
+
+}
+
+.ask-button:active {
+    transform: translateY(0);
+}
+
+.clear-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(140, 156, 140, 0.1);
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+    z-index: 10;
+}
+
+.clear-button:hover {
+    background: rgba(180, 80, 80, 0.1);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.clear-button:active {
+    transform: scale(0.95);
+}
+
+.dustbin-icon {
+    width: 18px;
+    height: 18px;
+    color: #8a9c8a;
+    transition: color 0.3s ease;
+}
+
+.clear-button:hover .dustbin-icon {
+    color: #b45050;
+}
+
+.scroll-container {
+    background: #d4a574;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    margin: 10px 0;
+}
+
+.scroll-container::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    right: 20px;
+    height: 10px;
+    background: #b8935f;
+    border-radius: 5px 5px 0 0;
+}
+
+.scroll-container::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 20px;
+    right: 20px;
+    height: 10px;
+    background: #b8935f;
+    border-radius: 0 0 5px 5px;
+}
+
+.stoic-emblem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: #2c3e2f;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    position: relative;
+}
+
+.stoic-emblem::before {
+    content: '🏛️';
+    font-size: 24px;
+}
+
+.response-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #2c3e2f;
+}
+
+.response-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #2c3e2f;
+    text-align: center;
+    font-style: italic;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    color: #f9f6f0;
+    font-style: italic;
+}
+
+.loading.active {
+    display: block;
+}
+
+.loading::after {
+    content: '...';
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+}
+
+.download-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4a6741;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    z-index: 10000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+}
+
+.download-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .device-frame {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .header-title {
+        font-size: 16px;
+    }
+
+    .input-textarea {
+        min-height: 120px;
+    }
+
+    .input-display {
+        min-height: 120px;
+    }
+
+    .dropdown-menu {
+        min-width: 180px;
+    }
 }

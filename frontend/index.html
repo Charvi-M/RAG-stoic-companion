@@ -1,18 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Stoic Companion</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoic Companion</title>
+    <!-- Include html2canvas library for screenshot functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Ask Your Stoic Companion</h1>
-    <input type="text" id="questionInput" placeholder="What troubles you today?" />
-    <button onclick="askStoic()">Ask</button>
-    <div id="answerBox"></div>
-  </div>
-
-  <script src="app.js"></script>
+    <div class="device-frame">
+        <div class="screen">
+           
+            <header class="header">
+                <div class="header-left">
+                    <span class="back-arrow">‹</span>
+                    <h1 class="header-title">Stoic Companion</h1>
+                </div>
+                 <div class="menu-container">
+                    <div class="menu-icon" id="menuIcon">
+                        <div class="menu-line"></div>
+                        <div class="menu-line"></div>
+                        <div class="menu-line"></div>
+                    </div>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <button class="menu-item" onclick="downloadStoicResponse()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7,10 12,15 17,10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Response as PNG
+                        </button>
+                        <button class="menu-item" onclick="downloadFullScreenshot()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21,15 16,10 5,21"></polyline>
+                            </svg>
+                            Download Full Screenshot
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content">
+                <div class="input-panel">
+                    <div class="input-container">
+                        <div class="input-display" id="inputDisplay" style="display: none;"></div>
+                        <textarea 
+                            id="questionInput" 
+                            class="input-textarea" 
+                            placeholder="I had decided to complete the task, but doubts clouded my mind..."
+                        ></textarea>
+                        <button class="clear-button" onclick="clearInput()" title="Clear input">
+                            <svg class="dustbin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 6h18"></path>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <button class="ask-button" onclick="askStoic()">Ask Your Stoic Companion</button>
+                </div>
+                
+                <div class="response-panel" id="responsePanel">
+                    <div class="scroll-container">
+                        <div class="stoic-emblem"></div>
+                        <div class="response-title">Stoic Response</div>
+                        <div class="response-text" id="answerBox">
+                            Share your thoughts or concerns, and receive wisdom from the great Stoic philosophers to guide your path forward.
+                        </div>
+                    </div>
+                    <div class="loading" id="loadingIndicator">Contemplating wisdom</div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <div class="download-notification" id="downloadNotification">
+        Screenshot downloaded successfully!
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
