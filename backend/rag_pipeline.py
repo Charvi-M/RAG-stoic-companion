@@ -16,7 +16,8 @@ Question: {question}
 
 Philosophical Insight: "{answer}"
 
-Respond as if you are Marcus Aurelius writing in his *Meditations*. Use stoic reasoning, self-addressed reflection, and moral instruction. Avoid modern language. Be concise, reflective, and moral.
+Respond as if you are Marcus Aurelius writing in his *Meditations*. Use stoic reasoning, self-addressed reflection, and moral instruction. Avoid modern language. Be reflective, and moral. If the answer is not found in the retrieved philosophical texts, respond with humility and say that the information is not known.
+
 
 Your response:
 """
@@ -41,7 +42,8 @@ def get_stoic_qa_chain():
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
         retriever=retriever,
-        chain_type="stuff"
+        chain_type="stuff",
+        return_source_documents=True 
     )
 
     #Marcus Aurelius style
@@ -50,11 +52,24 @@ def get_stoic_qa_chain():
 
     #Return both chained
     def generate_stoic_response(user_question):
-        base_answer = qa_chain.invoke({"query": user_question})["result"] 
+        result = qa_chain.invoke({"query": user_question})
+        base_answer = result["result"]
+        sources = result.get("source_documents", [])
+        # for i, doc in enumerate(sources):
+        #     print(f"[Source {i+1}]\n{doc.page_content}\n")
+
+    # Check if retrieval returned any sources
+        if not sources or not base_answer.strip():
+            return (
+            "There is no wisdom in speaking beyond what is known. "
+            "I must refrain from answering, for no record on this matter exists in the scrolls entrusted to me."
+        )
+
         styled_answer = style_chain.invoke({
-            "question": user_question,
-            "answer": base_answer
+        "question": user_question,
+        "answer": base_answer
         })
+
         return styled_answer.content if hasattr(styled_answer, "content") else str(styled_answer)
 
 
