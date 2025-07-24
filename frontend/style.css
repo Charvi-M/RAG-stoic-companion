@@ -81,6 +81,7 @@ body::after {
     z-index: 10001;
     max-width: 1000px;
     width: 100%;
+    overflow: hidden;
 }
 
 .screen {
@@ -103,6 +104,7 @@ body::after {
     transition: opacity 0.3s ease; 
     opacity: 1;
     visibility: visible;
+    overflow: hidden;
 }
 
 .aboutgreen {
@@ -131,7 +133,9 @@ body::after {
     transform: translate(-50%, -50);
     position: absolute;
     width: 80%;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
 }
 
 .aboutText {
@@ -142,9 +146,11 @@ body::after {
 }
 .rightabout {
     text-align: center;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 .leftabout{
-    padding-left: 30px;
+    padding-left: 20px;
     padding-top: 20px;
 }
 .stackTitle{
@@ -166,6 +172,14 @@ li {
     font-style: italic;
 }
 
+.aboutButton{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    /* text-align: center; */
+    grid-column: 1/-1;
+}
+
 .getstarted {
     background: linear-gradient(135deg, #4a6741, #5c7a52);
     color: white;
@@ -180,7 +194,7 @@ li {
     margin-bottom: 5px;
     font-weight: 600;
     box-shadow: 0 3px 10px rgba(74, 103, 65, 0.3);
-    
+   
 }
 
 .changeScreen{
@@ -592,12 +606,46 @@ li {
     transform: translateX(0);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 853px) {
     .device-frame {
         padding: 15px;
         margin: 10px;
+        overflow: hidden;
     }
 
+    .screen {
+        overflow: hidden;}
+    
+    .aboutscreen {
+        width: 96.5%;
+        height: 96%;
+    }
+
+      .aboutcard {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px;
+        top: 15%;
+    }
+
+
+    .leftabout{
+        min-height: 160px;
+        font-size: 14px;
+        padding-right: 22px;
+    }
+     .rightabout{
+        min-height: 160px;
+        height:250px;
+        font-size: 14px; 
+        margin-bottom: 10px;
+    }
+    .stackTitle{
+        font-size: 20px;
+    }
+   .getstarted{
+        margin-bottom: 2;
+   }
     .content {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -620,3 +668,143 @@ li {
         min-width: 180px;
     }
 }
+
+@media (max-width: 768px) {
+      .aboutscreen {
+        width: 96%;
+        height: 96%;
+    }
+    
+}
+
+ @media (max-width: 540px) {
+          .aboutscreen{
+                width: 94%;
+                height: 96%;
+            }
+           .aboutcard {
+                padding: 15px;
+                top: 16%;
+                overflow-y: auto;
+                max-height: 630px;
+            }
+        }
+
+ @media (max-width: 480px) {
+          .aboutscreen{
+                width: 93%;
+                height: 96%;
+            }
+            .aboutcard {
+                /* padding: 15px; */
+                top: 16%;
+                overflow-y: auto;
+                max-height: 630px;
+            }
+            .aboutText {
+                line-height: 1.6;
+            }
+            li{
+                line-height: 1.5;
+            }
+            .getstarted {
+                margin-top: 1px;
+                margin-bottom: 20px;
+            }
+        }
+
+ @media (max-width: 430px) {
+          .aboutscreen{
+                width: 92%;
+                height: 96%;
+            }
+            .aboutcard {
+                padding: 15px;
+                top: 16%;
+            }
+        }
+
+ @media (max-width: 414px) {
+          .aboutscreen{
+                width: 92%;
+                height: 96%;
+            }
+            .aboutcard {
+                padding: 15px;
+                top: 16%;
+            }
+        }
+
+ @media (max-width: 390px) {
+          .aboutscreen{
+                width: 91%;
+                height: 96%;
+            }
+            .aboutcard {
+                
+                top: 14%;
+                max-height: 690px;
+                gap: 2px;
+            }
+            .aboutText {
+                line-height: 1.3;
+            }
+            .aboutTitle{
+                margin-top: 10px;
+            }
+            /*  */
+            
+        }
+@media (max-width: 375px) {
+    .leftabout {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .rightabout {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width:360px) {
+     .aboutscreen{
+                width: 91%;
+                height: 96%;
+            }
+            .aboutcard {
+                padding: 15px;
+                top: 15%;
+            }
+            .getstarted{
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+}
+
+@media (max-width: 344px) {
+    .aboutText{
+        font-size: 14px;}
+        li{
+        font-size: 14px;}
+     .leftabout {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    .rightabout {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+     .getstarted{
+                font-size: 12px;
+                margin-bottom: 10px;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+}
+
+
+
+
+
+
