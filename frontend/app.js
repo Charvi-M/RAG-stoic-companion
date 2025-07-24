@@ -44,6 +44,18 @@ async function askStoic() {
     }
 }
 
+//Function to change screen
+function changeScreen() {
+    const aboutScreen = document.querySelector('.aboutscreen');
+    
+    if (aboutScreen.classList.contains('changeScreen')) {
+        aboutScreen.classList.remove('changeScreen');
+    } else {
+        aboutScreen.classList.add('changeScreen');
+    }
+}
+
+
 // Function to clear the input when dustbin icon is clicked
 function clearInput() {
     const input = document.getElementById('questionInput');

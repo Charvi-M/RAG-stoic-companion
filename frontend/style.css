@@ -59,8 +59,8 @@ body::after {
 
 .scribble {
   position: absolute;
-  width: 120px;
-  height: 120px;
+  width: 50px;
+  height: 50px;
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.15;
@@ -87,6 +87,107 @@ body::after {
     background: linear-gradient(135deg, #f5f2eb 0%, #ede6d9 100%);
     border-radius: 15px;
     overflow: hidden;
+}
+
+.aboutscreen {
+    position: absolute;
+    width:95%;
+    max-width: 1000px;
+    border-radius: 15px;
+    background: #f0ead9;
+    z-index: 1000;
+    height: 92%;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: opacity 0.3s ease; 
+    opacity: 1;
+    visibility: visible;
+}
+
+.aboutgreen {
+    background: linear-gradient(135deg, #4a6741, #5c7a52);
+    color: white;
+    padding: 20px;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    height: 200px;
+}
+
+.aboutTitle {
+    font-weight: 700;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.aboutcard{
+    background: linear-gradient(180deg,  #f4ebd8,#f4ecda);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    top: 18%;
+    left: 10%;
+    transform: translate(-50%, -50);
+    position: absolute;
+    width: 80%;
+    text-align: center;
+}
+
+.aboutText {
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+    font-style: italic;
+}
+.rightabout {
+    text-align: center;
+}
+.leftabout{
+    padding-left: 30px;
+    padding-top: 20px;
+}
+.stackTitle{
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: 20px;
+    text-align: center;
+    color: #4a6741;
+}
+
+ul {
+    list-style: none;
+    margin-top: 15px;
+}
+
+li {
+    font-size: 16px;
+    line-height: 1.95;
+    font-style: italic;
+}
+
+.getstarted {
+    background: linear-gradient(135deg, #4a6741, #5c7a52);
+    color: white;
+    border: none;
+    padding: 15px 55px;
+    border-radius: 8px;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(74, 103, 65, 0.3);
+    
+}
+
+.changeScreen{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .header {
@@ -374,6 +475,9 @@ body::after {
     padding: 20px;
     position: relative;
     margin: 10px 0;
+    height: 400px; 
+    display: flex;
+    flex-direction: column;
 }
 
 .scroll-container::before {
@@ -431,6 +535,19 @@ body::after {
     font-style: italic;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.scroll-hidden {
+  overflow: auto;
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge */
+}
+
+.scroll-hidden::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari */
 }
 
 .loading {
