@@ -7,27 +7,7 @@ Stoic Companion is a Retrieval Augmented Generation system that uses Stoic Data 
 
 ## Project Structure
 
-STOIC_COMPANION_RAG/
-backend/
-├─ data/
-│  ├─ daily_stoic_articles.txt
-│  ├─ meditations.txt
-├─ faiss_index/
-│  ├─ index.faiss
-│  ├─ index.pkl
-├─ app.py
-├─ prepare_vectorstore.py
-├─ rag_pipeline.py
-├─ scraper.py
-├─ test_chain.py
-frontend/
-├─ app.js
-├─ index.html
-├─ style.css
-.env
-.gitignore
-README.md
-requirements.txt
+![Project Structure](https://github.com/Charvi-M/RAG-stoic-companion/blob/master/projectstr.jpg?raw=true)
 
 ## Project Setup
 
