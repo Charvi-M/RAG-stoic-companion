@@ -1,6 +1,5 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
@@ -35,10 +34,9 @@ def get_stoic_qa_chain():
     if qa_chain is not None:
         return generate_stoic_response  # Already built
 
-    embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-    vectorstore = FAISS.load_local("faiss_index", embedding_model, allow_dangerous_deserialization=True)
+    # No embedding model is loaded at runtime!
+    vectorstore = FAISS.load_local("faiss_index", embeddings=None, allow_dangerous_deserialization=True)
 
-   
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-pro",
         temperature=0.7,
@@ -47,7 +45,6 @@ def get_stoic_qa_chain():
 
     retriever = vectorstore.as_retriever(search_type="similarity", k=3)
 
-    
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
         retriever=retriever,
@@ -55,13 +52,10 @@ def get_stoic_qa_chain():
         return_source_documents=True
     )
 
-    # Build the styling chain
     style_chain = stoic_style_prompt | llm
 
     return generate_stoic_response
 
-
-# Final chain logic with stoic formatting
 def generate_stoic_response(user_question):
     global qa_chain, style_chain
 
