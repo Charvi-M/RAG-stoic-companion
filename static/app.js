@@ -12,7 +12,7 @@ async function askStoic() {
     // Show loading state
     loadingIndicator.classList.add('active');
     answerBox.style.opacity = '0.5';
-    answerBox.textContent = "Contemplating ...";
+    answerBox.textContent = "Contemplating, It may take a minute ...";
 
     try {
         const response = await fetch("http://127.0.0.1:5000/ask", {
