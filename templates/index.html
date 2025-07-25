@@ -6,7 +6,7 @@
     <title>Stoic Companion</title>
     <!-- Include html2canvas library for screenshot functionality -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="device-frame">
@@ -107,6 +107,6 @@
            
             <p>Developed by Charvi Mishra</p>
         </div></footer>
-    <script src="app.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

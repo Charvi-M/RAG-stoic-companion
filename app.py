@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from rag_pipeline import get_stoic_qa_chain
 
@@ -8,6 +8,10 @@ CORS(app)
 
 #Load RAG pipeline
 qa_chain = get_stoic_qa_chain()  
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 @app.route("/ask", methods=["POST"])
 def ask_question():
