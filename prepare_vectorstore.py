@@ -12,10 +12,10 @@ def load_text(file_path):
 def build_vectorstore():
     # Skip if already exists
     if os.path.exists("faiss_index/index.faiss"):
-        print("✓ Vectorstore already exists, skipping build")
+        print("Vectorstore already exists, skipping build")
         return
 
-    print("Loading text content...")
+    
     # Load raw content
     meditations_text = load_text("data/meditations.txt")
     articles_text = load_text("data/daily_stoic_articles.txt")
@@ -30,7 +30,7 @@ def build_vectorstore():
     del meditations_text, articles_text
     gc.collect()
 
-    print("Splitting documents into chunks...")
+    
     # Use smaller chunks to reduce memory usage
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=400,  # Reduced from 500
@@ -43,11 +43,11 @@ def build_vectorstore():
     del documents
     gc.collect()
     
-    print(f"Created {len(split_docs)} document chunks")
+    
 
     # Limit the number of chunks if too many (memory safety)
     if len(split_docs) > 2000:
-        print(f"Too many chunks ({len(split_docs)}), limiting to 2000 for memory safety")
+    
         split_docs = split_docs[:2000]
 
     
@@ -58,7 +58,7 @@ def build_vectorstore():
         encode_kwargs={'normalize_embeddings': True}
     )
 
-    print("🔍 Building FAISS vectorstore...")
+   
     # Process in smaller batches to avoid memory spikes
     batch_size = 100
     vectorstore = None

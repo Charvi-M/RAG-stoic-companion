@@ -2,23 +2,25 @@ import requests
 from bs4 import BeautifulSoup
 
 def scrape_meditations():
-    url = "https://www.gutenberg.org/cache/epub/2680/pg2680-images.html"  
+    url = "https://www.gutenberg.org/files/2680/2680-h/2680-h.htm"  # more stable version
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
-    
+
     content = soup.get_text(separator="\n")
     with open("meditations.txt", "w", encoding="utf-8") as f:
         f.write(content)
+    print("Saved meditations.txt")
 
 def scrape_daily_stoic_articles():
-    base_url = "https://dailystoic.com/all-articles/"
+    base_url = "https://modernstoicism.com/articles/"
     response = requests.get(base_url)
     soup = BeautifulSoup(response.text, "html.parser")
-    
+
     article_links = [
         a['href'] for a in soup.find_all('a', href=True)
-        if "/blog/" in a['href']
-    ][:10]
+        if "/articles/" in a['href']
+    ][:7]
+
 
     articles = []
     for link in article_links:
@@ -33,7 +35,10 @@ def scrape_daily_stoic_articles():
     with open("daily_stoic_articles.txt", "w", encoding="utf-8") as f:
         for article in articles:
             f.write(article + "\n\n")
+   
 
 if __name__ == "__main__":
+
     scrape_meditations()
     scrape_daily_stoic_articles()
+    

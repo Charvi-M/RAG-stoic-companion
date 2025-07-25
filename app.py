@@ -34,8 +34,13 @@ def initialize_qa_system():
             return False
 
         from rag_pipeline import get_stoic_qa_chain
-        qa_chain = get_stoic_qa_chain()
+        qa_func = get_stoic_qa_chain()
 
+        if qa_func is None or not callable(qa_func):
+            logger.error("get_stoic_qa_chain returned None or non-callable")
+            return False
+
+        qa_chain = qa_func
         logger.info("QA system initialized successfully")
         return True
 
@@ -43,6 +48,7 @@ def initialize_qa_system():
         logger.error(f"Initialization error: {str(e)}")
         logger.error(traceback.format_exc())
         return False
+
 
 @app.before_request
 def ensure_qa_chain_initialized():
@@ -79,7 +85,7 @@ def health():
             "status": "ok",
             "vectorstore_exists": os.path.exists("faiss_index/index.faiss") and os.path.exists("faiss_index/index.pkl"),
             "env_key_set": bool(os.getenv("GEMINI_API_KEY")),
-            "qa_chain_initialized": qa_chain is not None
+            "qa_chain_initialized": qa_chain is not None and callable(qa_chain)
         }
 
         if not health_status["qa_chain_initialized"]:
@@ -105,7 +111,7 @@ def debug_info():
             "python_version": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}",
             "working_directory": os.getcwd(),
             "current_dir_files": [f for f in os.listdir(".") if not f.startswith('.')],
-            "qa_chain_status": "initialized" if qa_chain else "not_initialized"
+            "qa_chain_status": "initialized" if qa_chain and callable(qa_chain) else "not_initialized"
         }
 
         debug_data["faiss_files"] = os.listdir("faiss_index") if os.path.exists("faiss_index") else "missing"
@@ -129,12 +135,16 @@ def ask_question():
 
         logger.info(f"Received question: {question[:50]}...")
 
-        if qa_chain is None:
-            logger.info("QA chain not ready, initializing...")
+        if qa_chain is None or not callable(qa_chain):
+            logger.info("QA chain not ready or not callable, initializing...")
             if not initialize_qa_system():
                 return jsonify({
                     "error": "QA system unavailable. Please check configuration."
                 }), 503
+
+        if not callable(qa_chain):
+            logger.error("QA chain is still not callable after init.")
+            return jsonify({"error": "QA system misconfiguration. Contact admin."}), 500
 
         logger.info("Generating answer...")
         answer = qa_chain(question)
