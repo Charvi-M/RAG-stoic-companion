@@ -1,13 +1,11 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from rag_pipeline import get_stoic_qa_chain
-
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-#Load RAG pipeline
-qa_chain = get_stoic_qa_chain()  
 
 @app.route("/")
 def home():
@@ -22,6 +20,8 @@ def ask_question():
         return jsonify({"error": "No question provided"}), 400
     
     try:
+        #Load RAG pipeline
+        qa_chain = get_stoic_qa_chain()  
         answer = qa_chain(question) 
         return jsonify({"answer": answer})
     except Exception as e:
