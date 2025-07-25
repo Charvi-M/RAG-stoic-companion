@@ -3,7 +3,21 @@ services:
     name: stoic-companion
     env: python
     buildCommand: |
+      # Install requirements
       pip install -r requirements.txt
+      
+      # Create data directory
+      mkdir -p data
+      
+      # Run scraper to get content
+      python scraper.py
+      mv meditations.txt data/
+      mv daily_stoic_articles.txt data/
+      
+      # Build vectorstore with memory optimization
       python prepare_vectorstore.py
-
-    startCommand: gunicorn app:app --workers 1 --bind 0.0.0.0:$PORT
+      
+      # Clean up data files to save space (optional)
+      # rm -rf data/
+      
+    startCommand: gunicorn app:app --workers 1 --bind 0.0.0.0:$PORT --max-requests 1000 --max-requests-jitter 100 --timeout 30
