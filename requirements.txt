@@ -6,5 +6,6 @@ sentence-transformers
 python-dotenv
 gunicorn
 flask
+flask_cors
 requests
 beautifulsoup4
