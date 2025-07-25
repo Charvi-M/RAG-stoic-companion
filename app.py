@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import os
+import traceback
 
 app = Flask(__name__)
 CORS(app)
@@ -32,6 +33,7 @@ def ask_question():
         answer = qa_chain(question)
         return jsonify({"answer": answer})
     except Exception as e:
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":

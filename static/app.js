@@ -14,35 +14,39 @@ async function askStoic() {
     answerBox.style.opacity = '0.5';
     answerBox.textContent = "Contemplating, It may take a minute ...";
 
-    try {
-        const response = await fetch("/ask", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ question })
-        });
+try {
+    const response = await fetch("/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question })
+    });
 
-        const data = await response.json();
-        
-        // Hide loading state
-        loadingIndicator.classList.remove('active');
-        answerBox.style.opacity = '1';
-        
-        if (data.answer) {
-            answerBox.textContent = data.answer;
-        } else {
-            answerBox.textContent = data.error || "No wisdom received at this time.";
-        }
-        
-        // Don't clear the input automatically - let user clear manually with dustbin icon
-        
-    } catch (err) {
-        // Hide loading state
-        loadingIndicator.classList.remove('active');
-        answerBox.style.opacity = '1';
-        answerBox.textContent = "An error occurred. Please try again.";
-        console.error(err);
+    if (!response.ok) {
+        throw new Error("Server error: " + response.status);
     }
+
+    const data = await response.json();
+
+    // Hide loading state
+    loadingIndicator.classList.remove('active');
+    answerBox.style.opacity = '1';
+
+    if (data.answer) {
+        answerBox.textContent = data.answer;
+    } else {
+        answerBox.textContent = data.error || "No wisdom received at this time.";
+    }
+
+} catch (err) {
+    // Hide loading state
+    loadingIndicator.classList.remove('active');
+    answerBox.style.opacity = '1';
+    answerBox.textContent = "An error occurred. Please try again.";
+    
+    // Log actual error
+    console.error("Fetch error:", err);
 }
+
 
 //Function to change screen
 function changeScreen() {
