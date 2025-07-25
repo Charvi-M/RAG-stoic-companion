@@ -53,7 +53,7 @@ def build_vectorstore():
     
     # Create embeddings with memory optimization
     embedding_model = HuggingFaceEmbeddings(
-        model_name="all-MiniLM-L6-v2",
+        model_name="all-MiniLM-L12-v1",
         model_kwargs={'device': 'cpu'},
         encode_kwargs={'normalize_embeddings': True}
     )
