@@ -24,8 +24,7 @@ def initialize_qa_system():
 
         logger.info("Initializing QA system...")
 
-        # Check if FAISS index files exist
-        if not os.path.exists("faiss_index/index.faiss") or not os.path.exists("faiss_index/index.pkl"):
+        if not os.path.exists("faiss_index/index.faiss"):
             logger.error("FAISS index files not found in faiss_index/")
             return False
 
@@ -83,7 +82,7 @@ def health():
     try:
         health_status = {
             "status": "ok",
-            "vectorstore_exists": os.path.exists("faiss_index/index.faiss") and os.path.exists("faiss_index/index.pkl"),
+            "vectorstore_exists": os.path.exists("faiss_index/index.faiss"),
             "env_key_set": bool(os.getenv("GEMINI_API_KEY")),
             "qa_chain_initialized": qa_chain is not None and callable(qa_chain)
         }
@@ -105,7 +104,6 @@ def debug_info():
     try:
         debug_data = {
             "vectorstore_exists": os.path.exists("faiss_index/index.faiss"),
-            "pkl_exists": os.path.exists("faiss_index/index.pkl"),
             "env_file_exists": os.path.exists(".env"),
             "gemini_key_set": bool(os.getenv("GEMINI_API_KEY")),
             "python_version": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}",
