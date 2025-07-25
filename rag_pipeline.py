@@ -20,20 +20,20 @@ class FastEmbedLangChainWrapper(Embeddings):
         return next(self.model.embed([text]))
 
 
-# Configure logging
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Load environment variables
+
 load_dotenv()
 
-# Globals
+#Globals
 vectorstore = None
 llm = None
 retrieval_qa_chain = None
 style_chain = None
 
-# Marcus Aurelius-style prompt
+
 stoic_style_prompt = PromptTemplate(
     input_variables=["question", "answer"],
     template="""
@@ -144,11 +144,12 @@ def generate_stoic_response(user_question):
 
         styled_response = styled.content if hasattr(styled, "content") else str(styled)
 
-        sources_info = "\n\n---\nSources consulted:\n" + "\n".join(
-            f"- {doc.metadata.get('source', 'Unknown')}" for doc in sources
-        )
+        
+        for i, doc in enumerate(sources, 1):
+            logger.info(f"[{i}] Source: {doc.metadata.get('source', 'Unknown')}")
 
-        return styled_response + sources_info
+        return styled_response 
+
 
     except Exception as e:
         logger.error(f"Error generating stoic response: {str(e)}")

@@ -5,7 +5,7 @@ import traceback
 import logging
 import sys
 
-# Configure logging
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app)
 
 qa_chain = None
-initialized = False  # for lazy init
+initialized = False  #due to deployment issues, we need to lazy-load the QA system
 
 def initialize_qa_system():
     """Initialize the QA system only if FAISS index and API key are present."""

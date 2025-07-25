@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def scrape_meditations():
-    url = "https://www.gutenberg.org/files/2680/2680-h/2680-h.htm"  # more stable version
+    url = "https://www.gutenberg.org/files/2680/2680-h/2680-h.htm"  
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
 

@@ -29,7 +29,7 @@ def build_vectorstore():
         print("Vectorstore already exists, skipping build")
         return
 
-    # Load and wrap documents
+    #Load and wrap documents
     meditations_text = load_text("data/meditations.txt")
     articles_text = load_text("data/daily_stoic_articles.txt")
     documents = [
@@ -37,11 +37,11 @@ def build_vectorstore():
         Document(page_content=articles_text, metadata={"source": "Daily Stoic Articles"})
     ]
 
-    # Free raw text memory
+    
     del meditations_text, articles_text
     gc.collect()
 
-    # Split into chunks
+    #Split into chunks
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=400,
         chunk_overlap=50,
@@ -55,7 +55,7 @@ def build_vectorstore():
     if len(split_docs) > 2000:
         split_docs = split_docs[:2000]
 
-    # Load FastEmbed model (optimized + lightweight)
+    
     embedding_model = FastEmbedLangChainWrapper(model_name="BAAI/bge-small-en-v1.5")
 
     
