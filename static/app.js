@@ -46,7 +46,7 @@ try {
     // Log actual error
     console.error("Fetch error:", err);
 }
-
+}
 
 //Function to change screen
 function changeScreen() {
@@ -321,4 +321,4 @@ document.querySelector('.back-arrow').addEventListener('click', function() {
 document.querySelector('.menu-icon').addEventListener('click', function() {
     // Add your menu logic here
     console.log('Menu icon clicked');
-});}
+});
