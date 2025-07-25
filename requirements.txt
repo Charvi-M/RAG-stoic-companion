@@ -1,6 +1,7 @@
 beautifulsoup4
 Flask
 flask_cors
+sentence-transformers
 langchain
 langchain_community
 faiss-cpu
