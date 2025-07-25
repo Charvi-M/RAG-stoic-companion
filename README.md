@@ -7,7 +7,7 @@ Stoic Companion is a Retrieval Augmented Generation system that uses Stoic Data 
 
 ## Project Structure
 
-![Project Structure](https://github.com/Charvi-M/RAG-stoic-companion/blob/master/projectstr.jpg?raw=true)
+![Project Structure](https://github.com/Charvi-M/RAG-stoic-companion/blob/master/projectstr.png?raw=true)
 
 ## Project Setup
 
