@@ -78,7 +78,7 @@ def get_stoic_qa_chain():
 
         logger.info("Initializing LLM (Gemini)...")
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash-exp",
+            model="gemini-2.5-pro",
             temperature=0.7,
             api_key=api_key,
             timeout=30,
