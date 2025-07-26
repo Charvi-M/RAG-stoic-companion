@@ -1,4 +1,5 @@
 import os
+import gc
 import logging
 import traceback
 from dotenv import load_dotenv
@@ -142,7 +143,7 @@ def generate_stoic_response(user_question):
 
 
         return styled_response 
-
+        gc.collect()
 
     except Exception as e:
         logger.error(f"Error generating stoic response: {str(e)}")

@@ -20,4 +20,4 @@ services:
       # Clean up data files to save space (optional)
       # rm -rf data/
       
-    startCommand: gunicorn app:app --workers 1 --bind 0.0.0.0:$PORT --max-requests 1000 --max-requests-jitter 100 --timeout 30
+    startCommand: gunicorn app:app --workers 1 --bind 0.0.0.0:$PORT --max-requests 1000 --max-requests-jitter 100 --timeout 120
