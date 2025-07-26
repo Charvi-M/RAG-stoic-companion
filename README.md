@@ -1,13 +1,13 @@
-# Stoic Companion Web App
+# [Stoic Companion Web App](https://stoic-companion.onrender.com/)
 
 ## Introduction
-Stoic Companion is a Retrieval Augmented Generation system that uses Stoic Data from two different sources on the internet and generates Stoic response. The data scraping is done by using BeutifulSoup and the text generation is done by using Gemini LLM. The vectorstore used is FAISS, with all-miniLM embeddings from Huggingface. The UI is created using vanilla HTML, CSS, JS.
+Stoic Companion is a Retrieval Augmented Generation system that uses Stoic Data from two different sources on the internet and generates Stoic response. The data scraping is done by using BeutifulSoup and the text generation is done by using Gemini LLM. The vectorstore used is FAISS. The UI is created using vanilla HTML, CSS, JS.
 
 
 
 ## Project Structure
 
-![Project Structure](https://github.com/Charvi-M/RAG-stoic-companion/blob/master/projectstr.jpg?raw=true)
+![Project Structure](https://github.com/Charvi-M/RAG-stoic-companion/blob/master/projectstr.png?raw=true)
 
 ## Project Setup
 
