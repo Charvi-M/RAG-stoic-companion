@@ -66,17 +66,17 @@ def get_stoic_qa_chain():
             logger.error("GEMINI_API_KEY not found in environment variables")
             return None
 
-        logger.info("Loading embedding model for query-time inference...")
+        
         embedder = FastEmbedLangChainWrapper(model_name="BAAI/bge-small-en-v1.5")
 
 
-        logger.info("Loading FAISS vectorstore...")
+        
         vectorstore = FAISS.load_local(
             "faiss_index", embeddings=embedder, allow_dangerous_deserialization=True
         )
         logger.info("Vectorstore loaded successfully")
 
-        logger.info("Initializing LLM (Gemini)...")
+        
         llm = ChatGoogleGenerativeAI(
             model="gemini-2.5-pro",
             temperature=0.7,
@@ -86,10 +86,10 @@ def get_stoic_qa_chain():
         )
         logger.info("LLM initialized successfully")
 
-        logger.info("Creating retriever...")
+        
         retriever = vectorstore.as_retriever(search_type="similarity", k=3)
 
-        logger.info("Creating QA chain...")
+        
         retrieval_qa_chain = RetrievalQA.from_chain_type(
             llm=llm,
             retriever=retriever,
@@ -97,7 +97,7 @@ def get_stoic_qa_chain():
             return_source_documents=True
         )
 
-        logger.info("Creating style chain...")
+        
         style_chain = stoic_style_prompt | llm
 
         logger.info("QA chain initialization completed successfully")
@@ -113,12 +113,12 @@ def generate_stoic_response(user_question):
     global retrieval_qa_chain, style_chain
 
     try:
-        logger.info(f"Processing question: {user_question[:50]}...")
+        
 
         if retrieval_qa_chain is None or style_chain is None:
             raise RuntimeError("QA chain not properly initialized")
 
-        logger.info("Invoking QA chain...")
+        
         result = retrieval_qa_chain.invoke({"query": user_question})
         base_answer = result.get("result", "").strip()
         sources = result.get("source_documents", [])
@@ -132,11 +132,7 @@ def generate_stoic_response(user_question):
                 "I must refrain from answering, for no record on this matter exists in the scrolls entrusted to me."
             )
 
-        logger.info("Sources used:")
-        for i, doc in enumerate(sources, 1):
-            logger.info(f"[{i}] {doc.metadata.get('source', 'Unknown')} - {doc.page_content[:200].strip()}...")
-
-        logger.info("Applying stoic styling...")
+        
         styled = style_chain.invoke({
             "question": user_question,
             "answer": base_answer
@@ -144,9 +140,6 @@ def generate_stoic_response(user_question):
 
         styled_response = styled.content if hasattr(styled, "content") else str(styled)
 
-        
-        for i, doc in enumerate(sources, 1):
-            logger.info(f"[{i}] Source: {doc.metadata.get('source', 'Unknown')}")
 
         return styled_response 
 
